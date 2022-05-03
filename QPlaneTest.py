@@ -46,7 +46,7 @@ batchSize = 256  # Batch size for the model
 updateRate = 5  # update target model every so many episodes
 startingOffset = 0  # is used if previous Results are loaded.
 
-loadModel = True  # will load "model.h5" for tf if True (model.npy for non-Deep)
+loadModel = False  # "True" ; will load "model.h5" for tf if True (model.npy for non-Deep)
 loadMemory = False  # will load "memory.pickle" if True
 loadResults = False  # will load "results.npy" if True
 jsbRender = True  # will send UDP data to flight gear for rendering if True

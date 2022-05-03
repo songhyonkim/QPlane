@@ -1,3 +1,29 @@
+# 설치, 수정 사항 by shkim
+
+### 라이브러리 설치
+```
+pip install matplotlib
+pip install tensorflow==2.5.0
+```
+
+### CUDA Toolkit 11.0 설치
+* https://developer.nvidia.com/cuda-11.0-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork
+
+### jsbsim path 수정
+
+```
+""" 34번 라인, JSBSimEnv.py"""
+# self.fdm = jsbsim.FGFDMExec('./src/environments/jsbsim/jsbsim/', None)  # declaring the sim and setting the path
+self.fdm = jsbsim.FGFDMExec('C:/JSBSim/', None)  # declaring the sim and setting the path
+```
+
+### c172r aircraft downlaod
+* https://sourceforge.net/p/flightgear/fgaddon/HEAD/tarball?path=/trunk/Aircraft/c172r
+* 저장할 위치 : C:\Program Files\FlightGear 2020.3\data\Aircraft
+### Flightgear 실행
+```
+fgfs.exe --fdm=null --native-fdm=socket,in,60,localhost,5550,udp --aircraft=c172p --airport=RKJJ
+```
 
 <!-- PROJECT LOGO -->
 <br />

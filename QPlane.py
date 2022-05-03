@@ -28,7 +28,7 @@ pauseDelay = 0.1  # time an action is being applied to the environment
 logDecimals = 0  # sets decimals for np.arrays to X for printing
 np.set_printoptions(precision=logDecimals)  # sets decimals for np.arrays to X for printing
 
-n_epochs = 50_000  # Number of generations
+n_epochs = 10  # 50_000 Number of generations
 n_steps = 1_000  # Number of inputs per generation
 n_actions = 4  # Number of possible inputs to choose from
 
