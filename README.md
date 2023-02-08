@@ -40,7 +40,7 @@ git clone https://github.com/JSBSim-Team/jsbsim.git
 * src\environments\jsbsim\JSBSimEnv.py, 34번 라인
 
   ```python
-  # self.fdm = jsbsim.FGFDMExec('./src/environments/jsbsim/jsbsim/', None)   # declaring the sim and setting the path
+  # self.fdm = jsbsim.FGFDMExec('./src/environments/jsbsim/jsbsim/', None)  
   self.fdm = jsbsim.FGFDMExec('C:/JSBSim/', None) 
   ```
 
@@ -56,17 +56,6 @@ git clone https://github.com/JSBSim-Team/jsbsim.git
 ### c172r aircraft downlaod
 * https://sourceforge.net/p/flightgear/fgaddon/HEAD/tree/trunk/Aircraft/c172r/
 * 저장할 위치 : C:\Program Files\FlightGear 2020.3\data\Aircraft
-
-### jsbsim data_out 설정
-
-* jsbsim 리파지토리에서 data_output/flightgear.xml 파일을 아래 구조처럼 복사한다.
-  ```
-  ├─src
-  │  ├─environments
-  │  │  ├─jsbsim
-  │  │  │  ├─data_output
-  │  │  │  │  ├─flightgear.xml
-  ```
 
 ### 실행
 
