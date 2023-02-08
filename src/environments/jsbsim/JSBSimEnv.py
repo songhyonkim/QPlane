@@ -31,8 +31,8 @@ class Env():
             np.random.seed(42)
 
         os.environ["JSBSIM_DEBUG"] = str(0)  # set this before creating fdm to stop debug print outs
-        # self.fdm = jsbsim.FGFDMExec('./src/environments/jsbsim/jsbsim/', None)  # declaring the sim and setting the path
-        self.fdm = jsbsim.FGFDMExec('C:/JSBSim/', None)  # declaring the sim and setting the path
+        self.fdm = jsbsim.FGFDMExec('./src/environments/jsbsim/jsbsim/', None)  # declaring the sim and setting the path
+        # self.fdm = jsbsim.FGFDMExec('C:/JSBSim/', None)  # declaring the sim and setting the path
         self.physicsPerSec = int(1 / self.fdm.get_delta_t())  # default by jsb. Each physics step is a 120th of 1 sec
         self.realTimeDelay = self.fdm.get_delta_t()
         self.fdm.load_model('c172r')  # loading cassna 172

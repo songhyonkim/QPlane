@@ -1,30 +1,88 @@
-# 설치, 수정 사항 by shkim
+# Update
 
-### 라이브러리 설치
+### Set Python virtual environment
+
 ```
+> cd 'folder of ai-pilot-project'
+> python -m venv .venv
+> .venv\Scripts\activate.bat
+(.venv) > python.exe -m pip install --upgrade pip
+(.venv) > pip install -r requirements.txt
+(.venv) > DO SOMETHING...
+```
+
+### Installed libraries
+
+```
+pip install jsbsim
 pip install matplotlib
 pip install tensorflow==2.5.0
 ```
 
+### jsbsim 코드 복제
+
+```
+cd src\environments
+git clone https://github.com/JSBSim-Team/jsbsim.git
+```
+> jsbsim 리파지토리 전체 정보가 필요하지는 않을 듯...
+> ``aircraft``, ``data_output``, ``engine`` 정도만 유지해도 될 듯...
+
 ### CUDA Toolkit 11.0 설치
+
 * https://developer.nvidia.com/cuda-11.0-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork
+* 참고
+  * https://github.com/tensorflow/tensorflow/issues/49295
+* PC를 재시작한다!
 
-### jsbsim path 수정
+### 코드 수정
 
-```
-""" 34번 라인, JSBSimEnv.py"""
-# self.fdm = jsbsim.FGFDMExec('./src/environments/jsbsim/jsbsim/', None)  # declaring the sim and setting the path
-self.fdm = jsbsim.FGFDMExec('C:/JSBSim/', None)  # declaring the sim and setting the path
-```
+* src\environments\jsbsim\JSBSimEnv.py, 34번 라인
+
+  ```python
+  # self.fdm = jsbsim.FGFDMExec('./src/environments/jsbsim/jsbsim/', None)   # declaring the sim and setting the path
+  self.fdm = jsbsim.FGFDMExec('C:/JSBSim/', None) 
+  ```
+
+* QPlane.py, 54-55번 라인
+
+  ```python
+  # jsbRender = False  # will send UDP data to flight gear for rendering if True
+  # jsbRealTime = False  # will slow down the physics to portrait real time rendering
+  jsbRender = True  
+  jsbRealTime = True  
+  ```
 
 ### c172r aircraft downlaod
-* https://sourceforge.net/p/flightgear/fgaddon/HEAD/tarball?path=/trunk/Aircraft/c172r
+* https://sourceforge.net/p/flightgear/fgaddon/HEAD/tree/trunk/Aircraft/c172r/
 * 저장할 위치 : C:\Program Files\FlightGear 2020.3\data\Aircraft
-### Flightgear 실행
-```
-fgfs.exe --fdm=null --native-fdm=socket,in,60,localhost,5550,udp --aircraft=c172p --airport=RKJJ
-```
 
+### jsbsim data_out 설정
+
+* jsbsim 리파지토리에서 data_output/flightgear.xml 파일을 아래 구조처럼 복사한다.
+  ```
+  ├─src
+  │  ├─environments
+  │  │  ├─jsbsim
+  │  │  │  ├─data_output
+  │  │  │  │  ├─flightgear.xml
+  ```
+
+### 실행
+
+* Flightgear 실행
+  ```
+  fgfs.exe --fdm=null --native-fdm=socket,in,60,localhost,5550,udp --aircraft=c172r --airport=RKJJ
+  ```
+
+* QPlane 실행
+  ```
+  python Qplane.py
+  ```
+
+  > UDP 통신을 하므로, Flightgear와 QPlane 간의 실행 순서는 상관 없음.
+
+---
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
