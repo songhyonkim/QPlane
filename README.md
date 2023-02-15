@@ -61,13 +61,13 @@ git clone https://github.com/JSBSim-Team/jsbsim.git
 
 * Flightgear 실행
   ```
-  fgfs.exe --fdm=null --native-fdm=socket,in,60,localhost,5550,udp --aircraft=c172r --airport=RKJJ
+  fgfs.exe --fdm=null --native-fdm=socket,in,60,localhost,5550,udp --aircraft=c172r  --airport=RKSI --disable-terrasync  --disable-sound 
   ```
 
 * QPlane 실행
   ```
   python Qplane.py
-  ```
+    ```
 
   > UDP 통신을 하므로, Flightgear와 QPlane 간의 실행 순서는 상관 없음.
 
